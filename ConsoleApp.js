@@ -23,7 +23,7 @@ function askQuestion(question) {
 
 
 async function Program() {
-    
+   console.log("helloWorld"); 
     let currency1 = await askQuestion("What currency do you want to convert? ");
 
     let currency2 = await askQuestion("What currency do you want to convert to? ");
