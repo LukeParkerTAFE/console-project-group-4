@@ -5,7 +5,7 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-function askQuestion(question, defaultValue) {
+async function askQuestion(question, defaultValue) {
     return new Promise((resolve, reject) => {
         rl.question(question, (ans) => {
             resolve(ans);
