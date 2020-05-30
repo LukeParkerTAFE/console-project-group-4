@@ -1,24 +1,6 @@
 const axios = require("axios");
 const { askQuestion } = require("../Common/ConsoleFunctions");
-
-async function currencyConverterY() {
-
-    let currency1 = await askQuestion("What currency do you want to convert from? ");
-    let currency2 = await askQuestion("What currency do you want to convert to? ");
-    let moneyAmount = await askQuestion("How much currency do you want to convert? ");
-    let response = await axios.get(`https://api.frankfurter.app/latest?amount=${moneyAmount}&from=${currency1}&to=${currency2}`);
-    console.log();
-    console.log(`$${response.data.amount} of ${currency1} is equal to:`);
-    console.log(response.data.rates);
-
-
-}
-
-module.exports = {
-    currencyConverter
-}
-
-
+const { indexArray } = require("../Common/ConsoleFunctions");
 
 async function currencyConverter() {
     let shouldLoop = true;
@@ -33,55 +15,15 @@ async function currencyConverter() {
                 break;
             case "N":
             case "n":
-                await currencyConverterN();
+                indexArray();
+                await currencyConverterY();
                 shouldLoop = false;
                 break;
         }
     }
-
 }
 
-async function currencyConverterN() {
-    let Array = [
-        {
-            "AUD": "Australian Dollar",
-            "BGN": "Bulgarian Lev",
-            "BRL": "Brazilian Real",
-            "CAD": "Canadian Dollar",
-            "CHF": "Swiss Franc",
-            "CNY": "Chinese Renminbi Yuan",
-            "CZK": "Czech Koruna",
-            "DKK": "Danish Krone",
-            "EUR": "Euro",
-            "GBP": "British Pound",
-            "HKD": "Hong Kong Dollar",
-            "HRK": "Croatian Kuna",
-            "HUF": "Hungarian Forint",
-            "IDR": "Indonesian Rupiah",
-            "ILS": "Israeli New Sheqel",
-            "INR": "Indian Rupee",
-            "ISK": "Icelandic Króna",
-            "JPY": "Japanese Yen",
-            "KRW": "South Korean Won",
-            "MXN": "Mexican Peso",
-            "MYR": "Malaysian Ringgit",
-            "NOK": "Norwegian Krone",
-            "NZD": "New Zealand Dollar",
-            "PHP": "Philippine Peso",
-            "PLN": "Polish Złoty",
-            "RON": "Romanian Leu",
-            "RUB": "Russian Ruble",
-            "SEK": "Swedish Krona",
-            "SGD": "Singapore Dollar",
-            "THB": "Thai Baht",
-            "TRY": "Turkish Lira",
-            "USD": "United States Dollar",
-            "ZAR": "South African Rand"
-        }
-    ];
-
-    console.log("Please find below the index of available countries:");
-    console.log(Array);
+async function currencyConverterY() {
     console.log();
     let currency1 = await askQuestion("What currency do you want to convert from? ");
     let currency2 = await askQuestion("What currency do you want to convert to? ");
@@ -92,3 +34,6 @@ async function currencyConverterN() {
     console.log(response.data.rates);
 }
 
+module.exports = {
+    currencyConverter
+}

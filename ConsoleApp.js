@@ -8,7 +8,6 @@ const { top5 } = require("./Functions/top5");
 
 async function Program() {
     await MainMenu();
-
 }
 
 async function MainMenu() {
@@ -32,7 +31,7 @@ async function MainMenu() {
                 await top5();
                 break;
             case "3":
-                await ratesTable();
+                await ratesTable(); 
                 break;
             case "4":
                 await monthlyAverage();
@@ -41,12 +40,11 @@ async function MainMenu() {
                 shouldLoop = false;
                 break;
             default:
+                console.log();
                 console.log("Error: input not found. Please enter a number from 1 to 5");
         }
     }
 }
-
-
 
 Program().then(() => {
     process.exit(0);
